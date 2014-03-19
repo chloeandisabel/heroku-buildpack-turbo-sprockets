@@ -98,6 +98,11 @@ private
               end
             end
           else
+            log "assets_precompile", :status => "failure"
+            puts "Precompiling assets failed, enabling runtime asset compilation"
+            install_plugins
+            puts "Please see this article for troubleshooting help:"
+            puts "http://devcenter.heroku.com/articles/rails31_heroku_cedar#troubleshooting"
             cache.clear "public/assets"
           end
         else
